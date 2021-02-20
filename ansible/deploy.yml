@@ -1,0 +1,15 @@
+- name: NodeJS APP
+  gather_facts: false
+  hosts: [all]
+  become: yes
+
+  tasks:
+
+    - name: Pull container NodeJS
+      docker_container:
+        name: nodejs_app
+        image: pavelpasha/nodejs_app
+        pull: true
+        state: started
+        ports:
+          - "80:8080"
